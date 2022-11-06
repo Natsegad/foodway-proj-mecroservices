@@ -5,6 +5,6 @@ import (
 	"core/pkg/db"
 )
 
-func AutoMigrate() {
+func AutoMigrateService() {
 	db.DataBase.AutoMigrate(&domain.Product{})
 }

@@ -19,6 +19,16 @@ type Product struct {
 	Carbonts  uint32 `json:"carbonts"` // углеводы
 }
 
+type ProductEmbeds struct {
+	P         Product `json:"product"`
+	ImagePath string  `json:"image_path"`
+	U         User    `json:"user"`
+}
+
+func (ths *Product) Validate() error {
+	return nil
+}
+
 func (ths *Product) AddToDataBase() error {
 	ok := db.DataBase.Create(&(*ths))
 	if ok.Error != nil {
