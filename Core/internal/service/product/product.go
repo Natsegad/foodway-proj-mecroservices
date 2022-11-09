@@ -9,6 +9,13 @@ import (
 	"fmt"
 )
 
+func getAllProducts() ([]domain.Product, error) {
+	var allProdcuts []domain.Product
+
+	ok := db.DataBase.Find(&allProdcuts)
+	return allProdcuts, ok.Error
+}
+
 func addProductToDataBase(prod domain.Product) error {
 	return db.DataBase.Create(&prod).Error
 }
@@ -33,4 +40,21 @@ func CreateProduct(prod domain.Product) error {
 	prod.StoreID = id
 
 	return addProductToDataBase(prod)
+}
+
+func GetProductsInStore(id uint32) ([]domain.Product, error) {
+	var retProds []domain.Product
+
+	products, err := getAllProducts()
+	if err != nil {
+		return nil, err
+	}
+
+	for _, v := range products {
+		if v.StoreID == id {
+			retProds = append(retProds, v)
+		}
+	}
+
+	return retProds, nil
 }

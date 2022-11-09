@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"io"
+	"strconv"
 )
 
 func CreateProductH(c *gin.Context) {
@@ -44,4 +45,29 @@ func CreateProductH(c *gin.Context) {
 	}
 
 	c.JSON(200, prodResp.StoreName)
+}
+
+func GetProductInStore(c *gin.Context) {
+	log := logger.GetLogger()
+
+	storeIdS := c.Request.URL.Query().Get("id")
+	uId, err := strconv.ParseUint(storeIdS, 10, 32)
+	if err != nil {
+		log.Errorf("Error read Request Body %s ", err.Error())
+		c.JSON(400, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+
+	products, err := product.GetProductsInStore(uint32(uId))
+	if err != nil {
+		log.Errorf("Error read Request Body %s ", err.Error())
+		c.JSON(400, gin.H{
+			"error": "Error bad request #2",
+		})
+		return
+	}
+
+	c.JSON(200, products)
 }

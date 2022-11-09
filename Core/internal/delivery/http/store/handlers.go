@@ -51,10 +51,6 @@ func CreateStore(c *gin.Context) {
 	c.JSON(200, storeNew)
 }
 
-func GetProductInStore(c *gin.Context) {
-
-}
-
 func GetStores(c *gin.Context) {
 	stores, err := store.GetStores()
 	if err != nil {

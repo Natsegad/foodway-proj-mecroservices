@@ -23,6 +23,7 @@ func Start() {
 			context.JSON(200, "main page product")
 		})
 		prod.POST("create/", product.CreateProductH)
+		prod.GET("getProducts/", product.GetProductInStore)
 	}
 
 	store := router.Group("store/")
@@ -31,7 +32,6 @@ func Start() {
 			context.JSON(200, "main page store")
 		})
 		store.POST("create/", store2.CreateStore)
-		store.GET("getProducts/", store2.GetProductInStore)
 		store.GET("getStores/", store2.GetStores)
 	}
 
