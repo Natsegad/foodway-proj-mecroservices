@@ -31,6 +31,8 @@ func Start() {
 			context.JSON(200, "main page store")
 		})
 		store.POST("create/", store2.CreateStore)
+		store.GET("get_products/", store2.GetProductInStore)
+		store.GET("get_stores/", store2.GetStores)
 	}
 
 	router.Run(cfg2.Cfg.IP + ":" + cfg2.Cfg.Port)
