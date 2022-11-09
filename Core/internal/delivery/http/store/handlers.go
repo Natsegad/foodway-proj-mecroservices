@@ -52,9 +52,17 @@ func CreateStore(c *gin.Context) {
 }
 
 func GetProductInStore(c *gin.Context) {
-	
+
 }
 
 func GetStores(c *gin.Context) {
+	stores, err := store.GetStores()
+	if err != nil {
+		c.JSON(400, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
 
+	c.JSON(200, stores)
 }

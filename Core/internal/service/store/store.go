@@ -53,3 +53,7 @@ func CreateStore(store domain.Store) error {
 
 	return addStoreToDb(store)
 }
+
+func GetStores() ([]domain.Store, error) {
+	return getAllStores()
+}

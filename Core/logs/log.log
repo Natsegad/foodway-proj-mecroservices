@@ -5,3 +5,4 @@ time="2022-11-09T23:38:43+04:00" level=info msg="ENV loaded ! " func="core/inter
 time="2022-11-09T23:38:48+04:00" level=error msg="Error read Request Body store Гасан жиес have " func="core/internal/delivery/http/store.CreateStore()" file="handlers.go:45"
 time="2022-11-09T23:40:24+04:00" level=info msg="ENV loaded ! " func="core/internal/cfg.LoadEnv()" file="cfg.go:29"
 time="2022-11-09T23:40:26+04:00" level=error msg="Error read Request Body store Гасан жиес have " func="core/internal/delivery/http/store.CreateStore()" file="handlers.go:45"
+time="2022-11-09T23:46:35+04:00" level=info msg="ENV loaded ! " func="core/internal/cfg.LoadEnv()" file="cfg.go:29"
