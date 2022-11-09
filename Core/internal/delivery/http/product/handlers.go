@@ -2,10 +2,11 @@ package product
 
 import (
 	"core/internal/domain"
-	"core/internal/service"
+	"core/internal/service/product"
 	"core/pkg/logger"
 	"encoding/json"
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 	"io"
 )
 
@@ -22,6 +23,7 @@ func CreateProductH(c *gin.Context) {
 	}
 
 	prodResp := domain.Product{}
+	prodResp.ID = uuid.New().ID()
 
 	err = json.Unmarshal(data, &prodResp)
 	if err != nil {
@@ -32,7 +34,14 @@ func CreateProductH(c *gin.Context) {
 		return
 	}
 
-	err = service.CreateProduct(prodResp)
+	err = product.CreateProduct(prodResp)
+	if err != nil {
+		log.Errorf("Error read Request Body %s ", err.Error())
+		c.JSON(400, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
 
-	c.JSON(200, prodResp)
+	c.JSON(200, prodResp.StoreName)
 }

@@ -26,6 +26,7 @@ type ProductEmbeds struct {
 }
 
 func (ths *Product) Validate() error {
+
 	return nil
 }
 

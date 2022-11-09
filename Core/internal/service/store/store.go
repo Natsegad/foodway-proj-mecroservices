@@ -18,7 +18,7 @@ func getAllStores() ([]domain.Store, error) {
 	return stores, nil
 }
 
-func haveStoreInDb(storeName string) (bool, uint32, error) {
+func HaveStoreInDb(storeName string) (bool, uint32, error) {
 	stores, err := getAllStores()
 	if err != nil {
 		return false, 0, err
@@ -43,7 +43,7 @@ func CreateStore(store domain.Store) error {
 		return err
 	}
 
-	have, _, err := haveStoreInDb(store.StoreName)
+	have, _, err := HaveStoreInDb(store.StoreName)
 	if err != nil {
 		return err
 	}
