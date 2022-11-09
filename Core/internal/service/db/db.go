@@ -6,5 +6,8 @@ import (
 )
 
 func AutoMigrateService() {
-	db.DataBase.AutoMigrate(&domain.Product{})
+	db.DataBase.AutoMigrate(
+		&domain.Product{},
+		&domain.Store{},
+	)
 }
