@@ -7,7 +7,7 @@ import (
 
 type Product struct {
 	ID        uint32 `json:"ID" gorm:"primaryKey"`
-	UserID    uint32 `json:"user_id"`
+	StoreID   uint32 `json:"store_id"`
 	StoreName string `json:"store_name"`
 	Name      string `json:"name"`
 	Price     uint32 `json:"price"`
@@ -68,7 +68,7 @@ func GetProductById(id uint32) (Product, error) {
 func NewProduct(id, userId, price, grams, calories, sqrls, fats, carbonts uint32, storeName, name, imagePath string) Product {
 	return Product{
 		ID:        id,
-		UserID:    userId,
+		StoreID:   userId,
 		StoreName: storeName,
 		Name:      name,
 		Price:     price,

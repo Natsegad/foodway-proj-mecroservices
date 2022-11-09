@@ -22,13 +22,15 @@ func CreateProduct(prod domain.Product) error {
 		return err
 	}
 
-	have, _, err := store.HaveStoreInDb(prod.StoreName)
+	have, id, err := store.HaveStoreInDb(prod.StoreName)
 	if err != nil {
 		return err
 	}
 	if !have {
 		return errors.New(fmt.Sprintf("Error: store %s not found ", prod.StoreName))
 	}
+
+	prod.StoreID = id
 
 	return addProductToDataBase(prod)
 }
