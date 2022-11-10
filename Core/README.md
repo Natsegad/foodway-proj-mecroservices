@@ -1,4 +1,6 @@
 # Api
+
+## Stores
 Get
 ```url
 /store/getStores
@@ -37,7 +39,7 @@ Post
 }
 ```
 
-Products
+## Products
 
 POST 
 Create product
