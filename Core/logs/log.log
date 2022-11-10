@@ -28,3 +28,6 @@ time="2022-11-10T00:24:07+04:00" level=info msg="ENV loaded ! " func="core/inter
 time="2022-11-10T00:24:10+04:00" level=error msg="Error read Request Body unexpected end of JSON input " func="core/internal/delivery/http/product.GetProductInStore()" file="handlers.go:68"
 time="2022-11-10T00:24:29+04:00" level=error msg="Error read Request Body unexpected end of JSON input " func="core/internal/delivery/http/product.GetProductInStore()" file="handlers.go:68"
 time="2022-11-10T00:24:45+04:00" level=error msg="Error read Request Body unexpected end of JSON input " func="core/internal/delivery/http/product.GetProductInStore()" file="handlers.go:68"
+time="2022-11-10T00:32:50+04:00" level=info msg="ENV loaded ! " func="core/internal/cfg.LoadEnv()" file="cfg.go:29"
+time="2022-11-10T00:33:45+04:00" level=info msg="Created product name Govno store name Дерьмо " func="core/internal/service/product.CreateProduct()" file="product.go:25"
+time="2022-11-10T00:33:49+04:00" level=info msg="Created product name Govno store name Дерьмо " func="core/internal/service/product.CreateProduct()" file="product.go:25"
