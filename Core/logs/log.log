@@ -55,3 +55,4 @@ time="2022-11-11T20:40:25+04:00" level=info msg="Created product name Govno stor
 time="2022-11-11T20:40:46+04:00" level=info msg="Created product name Govnosdsdsdsd store name Де " func="core/internal/service/product.CreateProduct()" file="product.go:38"
 time="2022-11-11T20:40:47+04:00" level=info msg="Created product name Govnosdsdsdsd store name Де " func="core/internal/service/product.CreateProduct()" file="product.go:38"
 time="2022-11-11T20:40:48+04:00" level=info msg="Created product name Govnosdsdsdsd store name Де " func="core/internal/service/product.CreateProduct()" file="product.go:38"
+time="2022-11-11T20:43:51+04:00" level=info msg="ENV loaded ! " func="core/internal/cfg.LoadEnv()" file="cfg.go:29"
