@@ -71,3 +71,18 @@ func GetProductInStore(c *gin.Context) {
 
 	c.JSON(200, products)
 }
+
+func GetAllProducts(c *gin.Context) {
+	log := logger.GetLogger()
+
+	products, err := product.GetAllProductsInDb()
+	if err != nil {
+		log.Errorf("Error read Request Body %s ", err.Error())
+		c.JSON(400, gin.H{
+			"error": "Error bad request #2",
+		})
+		return
+	}
+
+	c.JSON(200, products)
+}

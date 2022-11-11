@@ -9,6 +9,7 @@ import (
 
 type UserInfo struct {
 	Id           uint32 `json:"id" gorm:"primaryKey"`
+	CartId       uint32 `json:"cart_id"`
 	Phone        string `json:"phone"`
 	Token        string `json:"jwt"`
 	RefreshToken string `json:"refresh_jwt"`

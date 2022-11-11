@@ -126,6 +126,7 @@ func Authorization(user domain.JsonUserInfo) (*domain.JsonUserInfo, error) {
 // NewUserInfo Создает юзера по телефону
 func NewUserInfo(phone string) db.UserInfo {
 	user := db.UserInfo{}
+	user.CartId = uuid.New().ID()
 	user.Phone = phone
 	user.Id = uuid.New().ID()
 	user.RefreshToken = jwtf.GenerateRefeshTokenById(user.Id)

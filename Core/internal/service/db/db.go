@@ -9,5 +9,6 @@ func AutoMigrateService() {
 	db.DataBase.AutoMigrate(
 		&domain.Product{},
 		&domain.Store{},
+		&domain.UserCart{},
 	)
 }

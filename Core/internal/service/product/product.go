@@ -20,6 +20,10 @@ func addProductToDataBase(prod domain.Product) error {
 	return db.DataBase.Create(&prod).Error
 }
 
+func GetAllProductsInDb() ([]domain.Product, error) {
+	return getAllProducts()
+}
+
 func CreateProduct(prod domain.Product) error {
 	log := logger.GetLogger()
 	log.Infof("Created product name %s store name %s ", prod.Name, prod.StoreName)
