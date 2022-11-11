@@ -20,8 +20,17 @@ func addProductToDataBase(prod domain.Product) error {
 	return db.DataBase.Create(&prod).Error
 }
 
-func GetAllProductsInDb() ([]domain.Product, error) {
-	return getAllProducts()
+func GetAllProductsInDb() (map[string][]domain.Product, error) {
+	storeNameProduct := make(map[string][]domain.Product)
+	prds, err := getAllProducts()
+	if err != nil {
+		return nil, err
+	}
+
+	for _, v := range prds {
+		storeNameProduct[v.StoreName] = append(storeNameProduct[v.StoreName], v)
+	}
+	return storeNameProduct, nil
 }
 
 func CreateProduct(prod domain.Product) error {
