@@ -1,7 +1,6 @@
 package db
 
 import (
-	"core/internal/cfg"
 	"fmt"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -17,9 +16,9 @@ type UserInfo struct {
 var DataBase *gorm.DB
 
 func InitDb() {
-	dbURL := fmt.Sprintf("postgres://%s:%s@database:%s/%s", cfg.Cfg.DbUser, cfg.Cfg.DbPassword, cfg.Cfg.DbPort, cfg.Cfg.DbName)
+	dsn := "host=database user=foodway password=foodwaypass dbname=foodway port=5432 sslmode=disable TimeZone=Asia/Shanghai"
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
-	db, err := gorm.Open(postgres.Open(dbURL), &gorm.Config{})
 	if err != nil {
 		fmt.Printf("Error initialize DB %s \n", err.Error())
 		return

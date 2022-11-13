@@ -47,9 +47,9 @@ func InitCfg() {
 		Port: "8080",
 		IP:   "localhost",
 
-		DbName:     "test-db",
-		DbPassword: "13134777",
-		DbPort:     "5436",
-		DbUser:     "postgres",
+		DbName:     "foodway",
+		DbPassword: "foodwaypass",
+		DbPort:     "5432",
+		DbUser:     "foodway",
 	}
 }
