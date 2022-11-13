@@ -3,13 +3,37 @@ version: "3"
 services:
   auth:
     build: Authorization
+    restart: always
     ports:
       - "3001:8080"
-  static_app:
-    build: StaticApp
-    ports:
-      - "3002:8080"
+    depends_on:
+      - database
+    networks:
+      - foodway
   core:
     build: Core
+    restart: always
     ports:
       - "3003:8080"
+    depends_on:
+      - database
+    networks:
+      - foodway
+  database:
+    image: postgres
+    restart: always
+    volumes:
+      - data:/var/lib/postgresql/data
+    networks:
+    - foodway
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 13134777
+      POSTGRES_DB: test-db
+      ports: 5436:5432
+volumes:
+  data:
+
+networks:
+  foodway:
+    driver: bridge

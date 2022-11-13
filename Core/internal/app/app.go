@@ -11,7 +11,7 @@ import (
 )
 
 func Start() {
-	cfg2.LoadEnv()
+	
 	cfg2.InitCfg()
 	pkgdb.InitDb()
 	db.AutoMigrateService()

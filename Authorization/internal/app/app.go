@@ -9,7 +9,7 @@ import (
 )
 
 func Start() {
-	cfg.LoadEnv()
+
 	cfg.InitCfg()
 	db.InitDb()
 	db.AutoMigrate()
