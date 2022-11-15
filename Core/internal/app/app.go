@@ -11,7 +11,7 @@ import (
 )
 
 func Start() {
-	
+
 	cfg2.InitCfg()
 	pkgdb.InitDb()
 	db.AutoMigrateService()
@@ -19,6 +19,10 @@ func Start() {
 	router := gin.Default()
 
 	prod := router.Group("products/")
+	prod.Use(func(context *gin.Context) {
+		context.Header("Access-Control-Allow-Methods", "GET, OPTIONS, POST, DELETE")
+		context.Header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With")
+	})
 	{
 		prod.GET("/", func(context *gin.Context) {
 			context.JSON(200, "main page product")
@@ -29,6 +33,10 @@ func Start() {
 	}
 
 	store := router.Group("store/")
+	store.Use(func(context *gin.Context) {
+		context.Header("Access-Control-Allow-Methods", "GET, OPTIONS, POST, DELETE")
+		context.Header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With")
+	})
 	{
 		store.GET("/", func(context *gin.Context) {
 			context.JSON(200, "main page store")
@@ -38,6 +46,10 @@ func Start() {
 	}
 
 	cartPage := router.Group("cart/")
+	cartPage.Use(func(context *gin.Context) {
+		context.Header("Access-Control-Allow-Methods", "GET, OPTIONS, POST, DELETE")
+		context.Header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With")
+	})
 	{
 		cartPage.GET("/", func(context *gin.Context) {
 			context.JSON(200, "main page cart")
