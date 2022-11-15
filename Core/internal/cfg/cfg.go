@@ -65,7 +65,7 @@ func InitCfg() {
 
 		DbName:     "test-db",
 		DbPassword: "13134777",
-		DbPort:     "5436",
+		DbPort:     "5432",
 		DbUser:     "postgres",
 	}
 }

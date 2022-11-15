@@ -17,7 +17,7 @@ type UserInfo struct {
 var DataBase *gorm.DB
 
 func InitDb() {
-	dbURL := fmt.Sprintf("postgres://%s:%s@database:%s/%s", cfg.Cfg.DbUser, cfg.Cfg.DbPassword, cfg.Cfg.DbPort, cfg.Cfg.DbName)
+	dbURL := fmt.Sprintf("postgres://%s:%s@localhost:%s/%s", cfg.Cfg.DbUser, cfg.Cfg.DbPassword, cfg.Cfg.DbPort, cfg.Cfg.DbName)
 
 	db, err := gorm.Open(postgres.Open(dbURL), &gorm.Config{})
 	if err != nil {
