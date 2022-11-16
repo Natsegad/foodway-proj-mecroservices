@@ -1,5 +1,12 @@
 package cfg
 
+import (
+	"core/pkg/logger"
+	"github.com/joho/godotenv"
+	"log"
+	"os"
+)
+
 type Config struct {
 	Port string
 	IP   string
@@ -8,64 +15,58 @@ type Config struct {
 	DbPassword string
 	DbUser     string
 	DbPort     string
+	DbHost     string
 }
 
 var Cfg Config
 
 func LoadEnv() {
-
+	if err := godotenv.Load(); err != nil {
+		log.Print("No .env file found")
+	}
 }
 
 func InitCfg() {
-	//log := logger.GetLogger()
-	//
-	//port, exst := os.LookupEnv("PORT")
-	//if !exst {
-	//	log.Errorf("Error get PORT")
-	//}
-	//
-	//id, exst := os.LookupEnv("ID")
-	//if !exst {
-	//	log.Errorf("Error get ID")
-	//}
-	//
-	//dbName, exst := os.LookupEnv("DBNAME")
-	//if !exst {
-	//	log.Errorf("Error get DbName")
-	//}
-	//
-	//dbPassword, exst := os.LookupEnv("DBPASSWORD")
-	//if !exst {
-	//	log.Errorf("Error get DBPASSWORD")
-	//}
-	//
-	//dbPort, exst := os.LookupEnv("DBPORT")
-	//if !exst {
-	//	log.Errorf("Error get DBPORT")
-	//}
-	//
-	//dbUser, exst := os.LookupEnv("DBUSER")
-	//if !exst {
-	//	log.Errorf("Error get DBUSER")
-	//}
+	log := logger.GetLogger()
 
-	//Cfg = Config{
-	//	Port: port,
-	//	IP:   id,
-	//
-	//	DbName:     dbName,
-	//	DbPassword: dbPassword,
-	//	DbPort:     dbPort,
-	//	DbUser:     dbUser,
-	//}
+	port, exst := os.LookupEnv("PORT")
+	if !exst {
+		log.Errorf("Error get PORT")
+	}
+
+	id, exst := os.LookupEnv("ID")
+	if !exst {
+		log.Errorf("Error get ID")
+	}
+
+	dbName, exst := os.LookupEnv("POSTGRES_DB")
+	if !exst {
+		log.Errorf("Error get DbName")
+	}
+
+	dbPassword, exst := os.LookupEnv("POSTGRES_PASSWORD")
+	if !exst {
+		log.Errorf("Error get DBPASSWORD")
+	}
+
+	dbUser, exst := os.LookupEnv("POSTGRES_USER")
+	if !exst {
+		log.Errorf("Error get DBUSER")
+	}
+
+	dbHost, exst := os.LookupEnv("DB_HOST")
+	if !exst {
+		log.Errorf("Error get DBUSER")
+	}
 
 	Cfg = Config{
-		Port: "8080",
-		IP:   "localhost",
+		Port: port,
+		IP:   id,
 
-		DbName:     "test-db",
-		DbPassword: "13134777",
+		DbName:     dbName,
+		DbPassword: dbPassword,
 		DbPort:     "5432",
-		DbUser:     "postgres",
+		DbUser:     dbUser,
+		DbHost:     dbHost,
 	}
 }

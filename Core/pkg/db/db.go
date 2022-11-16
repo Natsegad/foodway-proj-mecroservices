@@ -17,9 +17,13 @@ type UserInfo struct {
 var DataBase *gorm.DB
 
 func InitDb() {
-	dbURL := fmt.Sprintf("postgres://%s:%s@localhost:%s/%s", cfg.Cfg.DbUser, cfg.Cfg.DbPassword, cfg.Cfg.DbPort, cfg.Cfg.DbName)
-
-	db, err := gorm.Open(postgres.Open(dbURL), &gorm.Config{})
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable",
+		cfg.Cfg.DbHost,
+		cfg.Cfg.DbUser,
+		cfg.Cfg.DbPassword,
+		cfg.Cfg.DbName,
+		cfg.Cfg.DbPort)
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		fmt.Printf("Error initialize DB %s \n", err.Error())
 		return

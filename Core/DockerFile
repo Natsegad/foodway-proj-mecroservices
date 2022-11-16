@@ -1,11 +1,13 @@
 FROM golang:1.19-buster
+ENV GOPATH=/
 
-WORKDIR /app
+COPY ./ ./
 
-# Download necessary Go modules
-COPY . ./
+# install psql
+RUN apt-get update
+RUN apt-get -y install postgresql-client
 
 RUN go mod download
-RUN go run /app/cmd/api/main.go
+RUN go build -o core cmd/api/main.go
 
-EXPOSE 8080
+CMD [ "./core" ]
